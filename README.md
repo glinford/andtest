@@ -2,13 +2,13 @@
 ANDigital Test
 
 #Summary
->As the purpose of the test is to build a demo for a potential client, I tried to maximize the animations and the UI layouts with some >trendings components and CSS framework (Material Design/Normalize). I believe that a non tech client is easily impressed and could >think "this is cool" if tiles and grids are liquid and nicely animated (My mother would think it's cool).
+>As the purpose of the test is to build a demo for a potential client, I tried to maximize the animations and the UI layout with some trendings components and CSS framework (Material Design/Normalize). I believe that a non tech client is easily impressed and could think "this is cool" if tiles and grids are liquid and nicely animated (My mother would think it's cool).
 
 >The demo shows a simple app/page with a grid in Instagram/Pinterest style of some local venues.
->User can input a location (Where ? eg: London soho) and a type of venue (What ? eg: Donuts).
->When a user click on a tile he gets a popup with the basic information, the top 5 tips about the venue (if any) and the google map >location so he can easily locate the venue.
->To load more tiles the user has to scroll down.
->The app is responsive (min 300px) so can be used with a phone easily
+User can input a location (Where ? eg: London soho) and a type of venue (What ? eg: Donuts).
+When a user click on a tile he gets a popup with the basic information, the top 5 tips about the venue (if any) and the google map location so he can easily locate the venue.
+To load more tiles the user has to scroll down.
+The app is responsive (min 300px) so can be used with a phone easily
 
 > I first used an api for geolocation, it's less precise but I believe it's also less annoying for the user (Native popups a message with allow/or block), if api fail or doesnt work , I still use the native Geoloc API, if everything goes wrong, I use London has default.
 
