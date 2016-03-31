@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>ANDigital | Foursquare</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel="stylesheet" href="./bower_components/normalize-css/normalize.css">
+    <link rel='stylesheet prefetch' href='./bower_components/angular-material/angular-material.min.css'>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    <div ng-controller="MainCtrl as vm" ng-cloak ng-app="app" layout="column" layout-fill>
+      <md-toolbar class="md-whiteframe-z2">
+        <div class="md-toolbar-tools">
+      <h2>
+        <span>Foursquare Search</span>
+      </h2>
+    </div>
+  </md-toolbar>
+  <div class="loading-more-indicator" ng-hide="initialized">
+    <md-progress-circular md-mode="indeterminate" md-diameter="100" class="progress-swatch"></md-progress-circular>
+  </div>
+  <md-content id="content-scroller" style="display:none;" ng-show="initialized">
+    <div id="summary">
+        <md-input-container md-no-float class="md-block">
+          <input ng-model="searchQuery" type="text" placeholder="Where ? eg: London Soho | Paris Marais">
+        </md-input-container>
+        <md-input-container md-no-float class="md-block">
+        <input ng-model="searchWhatQuery" type="text" placeholder="What ? eg: Museum | Bagels">
+        </md-input-container>
+    </div>
+    <div>
+      <md-card ng-hide="tiles.length > 0" class="dialog-tips-list" ng-cloak>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Oops ... </span>
+            <span class="md-subhead">There is no venues for your search queries... Try something else ?</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-sm card-media">
+              <img ng-src="/img/cry.png" class="dialog-tips-user-profilepic" alt="No Venue">
+            </div>
+          </md-card-title-media>
+        </md-card-title>
+      </md-card>
+        <div class="cards-wrap" angular-grid="tiles" ag-grid-width="300" ag-gutter-size="12" ag-id="tiles" ag-infinite-scroll="vm.loadMoreTiles()">
+          <div class="card" ng-repeat="tile in tiles track by $index" ng-click="showAdvanced($event, tile)">
+            <div class="img" style="background-image: url({{tile.photoURL}});"></div>
+            <div class="inside">
+              <h3>{{tile.venue.name}}</h3>
+              <div class="description">{{tile.venue.categories[0].name}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="loading-more-indicator" ng-show="vm.loadingMore">
+          <md-progress-circular md-mode="indeterminate" md-diameter="64" class="progress-swatch"></md-progress-circular>
+        </div>
+    </div>
+  </md-content>
+</div>
+
+<script src='./bower_components/angular/angular.min.js'></script>
+<script src='./bower_components/angular-animate/angular-animate.min.js'></script>
+<script src='./bower_components/angular-aria/angular-aria.min.js'></script>
+<script src='./bower_components/angular-messages/angular-messages.min.js'></script>
+<script src='./bower_components/angular-material/angular-material.js'></script>
+<script src='./bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js'></script>
+<script src='./bower_components/angulargrid/angulargrid.js'></script>
+<script src="./bower_components/ngmap/build/scripts/ng-map.min.js"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyARGyICwntZNtXjvp2qUwWjYDi4yhuAM28"></script>
+<script src="js/constants.js"></script>
+<script src="js/index.js"></script>
+<script src="js/services/utils.service.js"></script>
+<script src="js/services/foursquare.service.js"></script>
+<script src="js/controllers/main.controller.js"></script>
+  </body>
+</html>

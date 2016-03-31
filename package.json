@@ -1,0 +1,16 @@
+{
+  "name": "and",
+  "version": "0.0.1",
+  "description": "ANDigital Test",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "greglin19@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.4.1",
+    "express": "^4.13.4"
+  }
+}

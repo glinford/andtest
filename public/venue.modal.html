@@ -1,0 +1,58 @@
+<md-dialog aria-label="{{modalData.venue.name}}">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{modalData.venue.name}}</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content class="dialog-modal-content">
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Description">
+          <md-content class="md-padding">
+            <img ng-src="{{modalData.photoURL}}" width="100%" class="dialog-tile-img" alt="{{modalData.venue.name}}">
+            <p>Type: {{modalData.venue.categories[0].name}}</p>
+            <p>Location: {{modalData.venue.location.address}}, {{modalData.venue.location.postalCode}}, {{modalData.venue.location.city}}, {{modalData.venue.location.country}}</p>
+            <p>Status: {{modalData.venue.hours.status}}</p>
+          </md-content>
+        </md-tab>
+        <md-tab label="Tips">
+          <md-content class="md-padding">
+            <md-card ng-repeat="tip in tips track by $index" class="dialog-tips-list">
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">{{tip.user.firstName}}{{tip.user.lastName}}</span>
+                  <span class="md-subhead">{{tip.text}}</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                  <div class="md-media-sm card-media">
+                    <img ng-src="{{tip.user.photo.prefix}}100x100{{tip.user.photo.suffix}}" class="dialog-tips-user-profilepic" alt="{{tip.user.firstName}}">
+                  </div>
+                </md-card-title-media>
+              </md-card-title>
+            </md-card>
+            <md-card ng-hide="tips.length > 0" class="dialog-tips-list">
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">Oops ... </span>
+                  <span class="md-subhead">This venue has no tips yet...</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                  <div class="md-media-sm card-media">
+                    <img ng-src="/img/cry.png" class="dialog-tips-user-profilepic" alt="No Tips">
+                  </div>
+                </md-card-title-media>
+              </md-card-title>
+            </md-card>
+          </md-content>
+        </md-tab>
+        <md-tab label="Map">
+          <md-content class="md-padding">
+            <ng-map class="dialog-tile-map" center="{{modalData.venue.location.lat}},{{modalData.venue.location.lng}}" zoom="12">
+              <marker position="{{modalData.venue.location.lat}},{{modalData.venue.location.lng}}" title="{{modalData.venue.name}}"></marker>
+            </ng-map>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-dialog-content>
+  </form>
+</md-dialog>
