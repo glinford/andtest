@@ -10,6 +10,8 @@ ANDigital Test
 >To load more tiles the user has to scroll down.
 >The app is responsive (min 300px) so can be used with a phone easily
 
+> I first used an api for geolocation, it's less precise but I believe it's also less annoying for the user (Native popups a message with allow/or block), if api fail or doesnt work , I still use the native Geoloc API, if everything goes wrong, I use London has default.
+
 #Technical Aspect:
 - JS: Angular/Angular-Material/AngularGird/NG-Map
 - CSS: Angular-Material/Normalize
